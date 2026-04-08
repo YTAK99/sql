@@ -16,7 +16,7 @@ CREATE TABLE student
 	address varchar2(10),
 	dept_id varchar2(10),
 
-	CONSTRAINT pk_department PRIMARY key(stu_id),
+	CONSTRAINT pk_department PRIMARY key(stu_id),		## pk_department : 제약식의 이름
 	CONSTRAINT fk_student FOREIGN KEY(dept_id) REFERENCES department(dept_id)
 )
 
@@ -56,6 +56,35 @@ ALTER TABLE student DROP COLUMN age
 
 
 
+-- 레코드 삽입 --
+INSERT INTO <테이블_이름> (<필드리스트>) VALUES (<값리스트>)	# 필드리스트 : 삽입에 사용될 테이블들의 필드
+														# 값리스트 : 필드리스트의 순서에 맞춰 삽입될 값	
+														# 나열되지 않은 필드에 대해서는 NULL 값이 입력됨
+(예시)
+INSERT INTO department(office, dept_id, dept_name)
+values('201호', '920', '컴퓨터공학과')
+
+INSERT INTO department		## 필드리스트 사용하지 않고 데이터를 삽입
+VALUES('920','컴퓨터공학과')
+
+
+-- 레코드 수정 --
+UPDATE <테이블 이름>
+SET <수정내역>
+WHERE <조건>
+
+(예시)
+UPDATE student
+SET YEAR = YEAR + 1		## 테이블에서 모든 학생들의 학년을 하나씩 증가
+
+UPDATE professor
+SET POSITION='교수', dept_id='923'
+WHERE name='고희석'
+
+
+-- 레코드 삭제 --
+DELETE FROM <테이블 이름>
+WHERE <조건>
 
 
 
@@ -97,9 +126,9 @@ ALTER TABLE student DROP COLUMN age
 
 
 
--- 테이블 삭제 --
 
--- 테이블 수정 --
+
+
 
 
 
