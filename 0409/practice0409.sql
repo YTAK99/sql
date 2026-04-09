@@ -215,4 +215,3 @@ WHERE dept.deptno = emp.deptno
 GROUP BY ROLLUP (dname, job)
 ORDER BY 1, 2
 
-
