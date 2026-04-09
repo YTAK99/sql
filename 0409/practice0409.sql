@@ -144,30 +144,75 @@ SAL + (CASE WHEN comm IS NULL
 FROM emp
 
 
+-----------------------------------------------------------------------------------------
+
+-- EXIST --
+단지 해당 row가 존재하는 지만 확인하고, 더 이상 수행되지 않는다
 
 
-
+-- IN --
+실제 존재하는 데이터들의 모든 값까지 확인
 
 
 -----------------------------------------------------------------------------------------
 
+-- ROWNUM --		# select 절에 의해 추출되는 데이터에 붙는 순번
+<   <=   =1   를 이용하여 비교 (>   >=   =2 는 동작하지 않는다)
 
+(예씨)
+SELECT * FROM emp
+WHERE rownum<=5;
 
+SELECT ename, sal, comm, sal+nvl(comm, 0) salsum 
+FROM emp
+ORDER BY 4 DESC;
 
+SELECT *
+FROM (SELECT ename, sal, comm, sal+nvl(comm, 0) salsum
+	FROM emp
+	ORDER BY 4 DESC)
+WHERE rownum<=5;
 
+SELECT *
+FROM (SELECT ename, sal, comm, sal+nvl(comm, 0) salsum
+	FROM emp
+	ORDER BY 4)
+WHERE rownum<=4
+ORDER BY sal
+
+-----------------------------------------------------------------------------------------
+
+-- BETWEEN --
+
+(예 - emp 테이블의 직원 중, 급여가 1500 이상 2500 이하인 직원을 구하시오.)
+SELECT * FROM emp
+WHERE sal BETWEEN 1500 AND 2500;
 
 
 -----------------------------------------------------------------------------------------
 
+-- GROUP FUNCTION -- 		## 일반적인 GROUP BY 절 사용
+
+(예시 - 부서명과 업무명을 기준으로 사원수와 급여 합을 집계한 일반적인 GROUP BY SQL 문장을 수행)
+SELECT dname, job,
+	count(*) "Total Emp1",
+	sum(sal) "Total Sal"
+FROM emp, dept
+WHERE dept.deptno = emp.deptno
+GROUP BY dname, job;
+ORDER BY 1, 2
 
 
 
+* ROLLUP 함수 사용
 
-
-
-
-
------------------------------------------------------------------------------------------
-
+(예)
+SELECT dname, job,
+	count(*) "Total Emp1",
+	sum(sal) "Total Sal"
+FROM emp, dept
+WHERE dept.deptno = emp.deptno
+GROUP BY ROLLUP (dname, job)
+ORDER BY 1, 2
 
 
