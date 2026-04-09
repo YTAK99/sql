@@ -31,6 +31,22 @@ def insert_emp(): # empno, ename, job, mgr, hiredate, sal, comm, deptno
     except oracledb.DatabaseError as e:
         print(f"Error inserting data: {e}")
 
+
+
+def delete_emp():
+    print("삭제... 허쉴?")
+    empno, ename = input().split()
+    print(empno, ename)
+
+    try:
+        cursor.execute("DELETE FROM EMP(EMPNO, ENAME) VALUES (:1, :2)", [empno, ename.upper()])
+        for row in cursor:
+            print(row)
+    except oracledb.DatabaseError as e:
+        print(f"Error fetching data: {e}")
+    
+
+
 def search_emp():
 # SELECT 예제
     try:
