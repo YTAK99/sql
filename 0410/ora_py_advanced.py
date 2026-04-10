@@ -195,3 +195,4 @@ if __name__ == "__main__":
         # 프로그램 종료 시 반드시 닫기
         cursor.close()
         conn.close()
+
