@@ -26,13 +26,14 @@ def insert_emp(): # empno, ename, job, mgr, hiredate, sal, comm, deptno
     empno, ename = input().split()
     print(empno, ename)
 
-    if empno.isdigit():        
+    if empno.isdigit():        # 문자열이 숫자로만 이루어져 있는지 확인
 #INSERT 예제
         try:
             # INSERT INTO EMP(EMPNO, ENAME) VALUES('1234','LEO')
             cursor.execute("INSERT INTO EMP(EMPNO, ENAME) VALUES (:1, :2)", [empno, ename.upper()])
             conn.commit()
             print("Data inserted successfully")
+            PList.clear()
         except oracledb.DatabaseError as e:
             print(f"Error inserting data: {e}")
     else:
