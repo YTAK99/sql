@@ -123,4 +123,3 @@ while loop:
 # 커서 및 커넥션 닫기
 cursor.close()
 conn.close()
-
