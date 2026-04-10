@@ -12,10 +12,11 @@ PList = []      # Person DB 리스트 저장
 
 def show_menu():
     print("-- 임직원 관리 시스템 --")
-    print("- 1. 직원 추가    -")
-    print("- 2. 직원 삭제    -")
-    print("- 3. 직원 조회    -")
-    print("- 4. 프로그램 종료 -")
+    print("-   1. 직원 추가    -")
+    print("-   2. 직원 삭제    -")
+    print("-   3. 직원 조회    -")
+    print("-   4. 프로그램 종료 -")
+    print()
     menu_num = input("메뉴를 선택해 주세요: ")
     print(menu_num)
     return menu_num
