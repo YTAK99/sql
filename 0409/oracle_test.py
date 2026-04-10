@@ -30,7 +30,7 @@ def show_menu():
     print("- 2. 직원 삭제    -")
     print("- 3. 직원 조회    -")
     print("- 4. 프로그램 종료 -")
-    menu_num = input("메뉴를 선택해 주세요.")
+    menu_num = input("메뉴를 선택해 주세요: ")
     print(menu_num)
     return menu_num
 
@@ -100,7 +100,7 @@ while loop:
         search_emp()
 
     else:
-        print("프로그램 종료 ***")
+        print("*** 프로그램 종료 ***")
         loop = False                    # break 써도 됨
 
 # 커서 및 커넥션 닫기
